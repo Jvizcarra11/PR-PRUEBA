@@ -21,7 +21,7 @@ spec:
         app: green-app
     spec:
       containers:
-      - name: green-container
+      - name: nginx
         image: 891377354290.dkr.ecr.us-east-1.amazonaws.com/green:latest
         ports:
             - containerPort: 80
@@ -38,7 +38,7 @@ metadata:
   labels:
     app: green-app
   annotations:
-    alb.ingress.kubernetes.io/healthcheck-path: /green/index.html
+    alb.ingress.kubernetes.io/healthcheck-path: /
 spec:
   type: NodePort
   selector:
@@ -69,7 +69,7 @@ spec:
   rules:
     - http:
         paths:               
-          - path: /green
+          - path: /
             pathType: Prefix
             backend:
               service:
