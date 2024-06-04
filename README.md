@@ -1,6 +1,5 @@
-################################################################################################################
-#######Arquitectura multiregion en EKS con balanceo entre regiones con Route 53 y simulación de Failover########
-################################################################################################################
+Arquitectura multiregion en EKS con balanceo entre regiones con Route 53 y simulación de Failover########
+
 
 # Consideraciones:
 # - AWS CLI (aws configure)
