@@ -1,0 +1,20 @@
+{
+    "Comment": "Multi region Domain",
+    "Changes": [
+      {
+        "Action": "CREATE",
+        "ResourceRecordSet": {
+          "Name": "multiregion.tecnicode.link.",
+          "Type": "A",
+          "SetIdentifier": "Secondary",
+          "Failover": "SECONDARY",
+          "AliasTarget": {
+            "HostedZoneId": "Z1H1FL5HABSF5",
+            "DNSName": "dualstack.k8s-colorapp-colorapp-4781189419-430398678.us-west-2.elb.amazonaws.com.",
+            "EvaluateTargetHealth": true
+            },
+          "HealthCheckId": "9df5a797-c006-4097-9f2e-a52faaa7a29c"
+        }
+    }   
+  ]
+}

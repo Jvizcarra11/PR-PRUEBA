@@ -1,0 +1,14 @@
+  {
+    "MyHealthCheck": {
+      "Type": "HTTP",
+      "Port": 80,
+      "ResourcePath": "/",
+      "FullyQualifiedDomainName": "multiregion.tecnicode.link",
+      "RequestInterval": 10,
+      "FailureThreshold": 3,
+      "MeasureLatency": true,
+      "Inverted": false,
+      "Disabled": false,
+      "HealthThreshold": 1
+    }
+  }

@@ -138,8 +138,6 @@ export Ingress_2=$(kubectl get ingress -n color-app-ingress \
 
 >>>> k8s-colorapp-colorapp-4781189419-2002793809.us-west-2.elb.amazonaws.com
 
-########################################### CONFIGURACION DE GLOBAL ACCELERATOR #####################################################
-
 ########################################### CONFIGURACION DE ROUTE 53 #####################################################
 
 #Obtener el hosted zone ID del dominio creado
@@ -150,8 +148,12 @@ Route53_HostedZone=$(aws route53 list-hosted-zones \
 echo $Route53_HostedZone
 >>>> Z065713631FZQ1ZU72HYR
 
-#Crear un Record en la Hosted Zone
-aws route53 change-resource-record-sets --hosted-zone-id $Route53_HostedZone --change-batch file://route53-records.json
+#Crear el Healtcheck y los Records en la Hosted Zone
+
+aws route53 create-health-check --health-check-config file://healthcheck.json
+aws route53 change-resource-record-sets --hosted-zone-id $Route53_HostedZone --change-batch file://primary-record.json
+aws route53 change-resource-record-sets --hosted-zone-id $Route53_HostedZone --change-batch file://secondary-record.json
+
 
 ########################################### SIMULACIÓN DEL FAILOVER #####################################################
 #Hacemos un escalamiento a 0 de los pods, del cluste01
